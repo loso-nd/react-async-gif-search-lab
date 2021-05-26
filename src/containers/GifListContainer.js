@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import GifList from '../components/GifList'
+import GifSearch from '../components/GifSearch'
 
 class GifListContainer extends Component {
     state = {
@@ -16,11 +17,18 @@ class GifListContainer extends Component {
             })
         })
     }
+
+    handleSubmit() {
+        console.log("Anisha what's goodie in the hoodie?")
+    }
+
+    
     render(){
         return (
             <div>
                 <h1>Anisha I like you.</h1>
                 <GifList gif={this.state.giphy} />
+                <GifSearch />
             </div>
            
         )

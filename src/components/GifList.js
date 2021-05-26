@@ -6,7 +6,7 @@ class GifList extends Component {
     render(){
         return (
             <div>
-                Hello
+                Hello from the GifList
             </div>
         )
     }
