@@ -13,9 +13,9 @@ class GifList extends Component {
         return (
             <div>
                 {this.props.gifs.map(gif => 
-                <ul>
-                    <li>
-                        <img src={gif.images.original.url} /> 
+                <ul key={gif.id}>
+                    <li key={gif.id}>
+                        <img src={gif.images.original.url} alt={gif.title} /> 
                     </li>
                 </ul>
 

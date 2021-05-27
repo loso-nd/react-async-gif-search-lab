@@ -9,27 +9,27 @@ class GifListContainer extends Component {
 
     //fetching data from Giphy API, store first 3 gifs from response to the state, pass that state down as props the the child <GifList />
     componentDidMount(){
-        fetch('https://api.giphy.com/v1/gifs/search?q=YOUR QUERY HERE&api_key=dc6zaTOxFJmzC&rating=g')
+        this.fetchGifs()
+
+    }
+
+    fetchGifs = (query) => {
+        console.log(query)
+        fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g`)
         .then(res => res.json())
         .then(gifs => {
             this.setState({
-                giphy: gifs.data.slice(0, 3)
+                giphy: gifs.data.slice(0, 5)
             })
         })
-    }
-
-    handleSubmit(e) {
-        e.preventDefault()
-        console.log("Anisha what's goodie in the hoodie?")
     }
 
 
     render(){
         return (
             <div>
-                <h1>Anisha I like you.</h1>
                 <GifList gifs={this.state.giphy} />
-                <GifSearch handleSubmit={this.handleSubmit} />
+                <GifSearch fetchGifs={this.fetchGifs}/>
             </div>
            
         )
@@ -37,3 +37,13 @@ class GifListContainer extends Component {
 }
 
 export default GifListContainer;
+
+/**
+ * Updates:
+ * ? componentDidMount
+    *  !Rather than write the fetch function here, I can separat the code. Create a fetchGif method and call the function inside componentDidMount.
+    *  !Pass the state as a prop to the child component
+    *  !Pass the fetchGif method as a prop into the child component which gives us access to pass the user input value thru a function as props from the child back to the parent. This event target value will represent our ${query} in the fetch URL.
+    * !We pass query as an arg into our method that is passed from the child to the parent and make use of this arg in our fetch url - ${query}
+ * 
+ */

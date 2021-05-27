@@ -1,3 +1,4 @@
+//presentational
 import React, { Component } from 'react'
 
 class GifSearch extends Component {
@@ -6,33 +7,27 @@ class GifSearch extends Component {
         search: ''
     }
 
-    // handleChange(event){
-    //     console.log("I take care of the search bar")
-    //     console.log("Event Target Value: ", event.target.value)
-    //     this.setState({
-    //         search: event.target.value
-    //     }, () => console.log("After setState:", this.state))
-    //     console.log("Before setState:", this.state)
-    // }
-
+    handleChange = (event) => {
+        // console.log("I take care of the search bar")
+        // console.log("Event Target Value: ", event.target.value)
+        this.setState({
+           search: event.target.value //captures the value of the user input
+        })
+    }
+    
     handleSubmit = (event) => {
         event.preventDefault()
-        console.log("I take care of the search bar")
-        console.log("Event Target Value: ", event.target.value)
-        this.setState({
-            search: event.target.value
-        }, () => console.log("After setState:", this.state))
-        console.log("Before setState:", this.state)
-    }
+        this.props.fetchGifs(this.state.search) //most updated search value
 
+    }
 
     render(){
         return (
             <form onSubmit={this.handleSubmit}>
                 <label>
                     Enter a Search Term
-                    <input type="text" name="search" value={this.state.value} 
-                        // onChange={event => this.handleChange(event)}
+                    <input type="text" name="search" value={this.state.search} 
+                        onChange={this.handleChange}
                         /> 
                 </label>
                 <input type="submit" value="submt" />
@@ -63,9 +58,9 @@ export default GifSearch
 *
 * ? Submitting a Controlled Form
 * Goal: Now that we're controlling the form with state, we want to set up a way to submit our form.
-* !Add synthetic event onSubmit to the form
-*
-*
+*   ! Add synthetic event onSubmit to the form
+*   ! to prevent the auto refresh we add e.preventDefault()
+*   ! We want to make use of the fetchGifs method, and pass in the state of our search. The state is updated per user input, initiating the setState update. This update is pass into this method to bumped back up to the parent. Once the function is invocked by the handleSubmit, it is re-rendered in componentDidMount calling the fetchGifs method to execute the ${query} or the search we expect
 *
 *
 *
