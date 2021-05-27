@@ -18,7 +18,7 @@ class GifSearch extends Component {
 
     render(){
         return (
-            <form>
+            <form onSubmit={(e) => this.props.handleSubmit(e)}>
                 <label>
                     Enter a Search Term
                     <input type="text" name="search" value={this.state.value} 
@@ -48,5 +48,15 @@ export default GifSearch
     *  !Add event Listener onChange to the form which will fire every time the value of an input changes
     *  !create a handleChange method that triggers when a change has be made in the search input
     *  !Via setState change the state of the state when handleChange method is triggerd by user input
-    *  * The event contains data about the target, which is whatever DOM element the event was    triggered on. That target, being an input, has a value attribute. This attribute is equal to whatever is currently entered into that particular input!
- */
+    * * The event contains data about the target, which is whatever DOM element the event was    triggered on. That target, being an input, has a value attribute. This attribute is equal to whatever is currently entered into that particular input!
+*
+* ? Submitting a Controlled Form
+* Goal: Now that we're controlling the form with state, we want to set up a way to submit our form.
+* !Add synthetic event onSubmit to the form
+*
+*
+*
+*
+*
+
+*/

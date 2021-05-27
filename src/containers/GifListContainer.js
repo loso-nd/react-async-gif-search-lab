@@ -13,12 +13,13 @@ class GifListContainer extends Component {
         .then(res => res.json())
         .then(gifs => {
             this.setState({
-                giphy: gifs.data
+                giphy: gifs.data.slice(0, 3)
             })
         })
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault()
         console.log("Anisha what's goodie in the hoodie?")
     }
 
