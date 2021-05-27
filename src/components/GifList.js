@@ -1,15 +1,17 @@
-import React, { Component } from 'react'
+//presentational component
+import React from 'react';
 
-class GifList extends Component {
+function  GifList (props){
+    console.log(props)
     
-
-    render(){
-        return (
-            <div>
-                Hello from the GifList
-            </div>
-        )
-    }
+    return (
+        <div>
+            Hello from the GifList component
+            
+            {props.gifs.map(gif =>  gif.url
+                )}
+        </div>
+    )
 }
 
 export default GifList

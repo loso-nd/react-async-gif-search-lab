@@ -22,13 +22,13 @@ class GifListContainer extends Component {
         console.log("Anisha what's goodie in the hoodie?")
     }
 
-    
+
     render(){
         return (
             <div>
                 <h1>Anisha I like you.</h1>
-                <GifList gif={this.state.giphy} />
-                <GifSearch />
+                <GifList gifs={this.state.giphy} />
+                <GifSearch handleSubmit={this.handleSubmit} />
             </div>
            
         )
