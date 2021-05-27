@@ -6,9 +6,19 @@ class GifSearch extends Component {
         search: ''
     }
 
-    handleChange(event){
+    // handleChange(event){
+    //     console.log("I take care of the search bar")
+    //     console.log("Event Target Value: ", event.target.value)
+    //     this.setState({
+    //         search: event.target.value
+    //     }, () => console.log("After setState:", this.state))
+    //     console.log("Before setState:", this.state)
+    // }
+
+    handleSubmit = (event) => {
+        event.preventDefault()
         console.log("I take care of the search bar")
-        console.log(event.target.value)
+        console.log("Event Target Value: ", event.target.value)
         this.setState({
             search: event.target.value
         }, () => console.log("After setState:", this.state))
@@ -18,11 +28,12 @@ class GifSearch extends Component {
 
     render(){
         return (
-            <form onSubmit={(e) => this.props.handleSubmit(e)}>
+            <form onSubmit={this.handleSubmit}>
                 <label>
                     Enter a Search Term
                     <input type="text" name="search" value={this.state.value} 
-                        onChange={event => this.handleChange(event)}/> 
+                        // onChange={event => this.handleChange(event)}
+                        /> 
                 </label>
                 <input type="submit" value="submt" />
             </form>
